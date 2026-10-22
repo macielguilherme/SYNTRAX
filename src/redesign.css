@@ -1,0 +1,316 @@
+/* SYNTRAX design-system refinements. Global tokens and document reset live in index.css. */
+.shell,
+.main,
+.content,
+.panel,
+.modal {
+  min-width: 0;
+}
+
+.main {
+  width: calc(100% - 250px);
+}
+
+.sidebar {
+  z-index: var(--z-sidebar);
+  background: var(--color-sidebar);
+}
+
+.panel,
+.stat-card,
+.mode-card,
+.progress-card,
+.mission-toolbar {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-panel);
+}
+
+.nav-item {
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-item:active,
+.primary:active,
+.secondary:active {
+  transform: translateY(1px);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible,
+.icon-button:focus-visible,
+.tiny-action:focus-visible {
+  outline: 2px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+}
+
+.hero {
+  border-color: #343047;
+  background:
+    radial-gradient(ellipse at 78% 51%, #302747 0, #171521 34%, transparent 65%),
+    linear-gradient(112deg, #15131e, #101118 66%, #161322);
+}
+
+.hero-visual {
+  pointer-events: none;
+}
+
+.stat-card,
+.panel,
+.hero,
+.modal,
+.mode-card {
+  border-radius: var(--radius-md);
+}
+
+.stat-card strong {
+  color: var(--color-text);
+}
+
+.mission-name b,
+.task-main > b {
+  font-size: 11px;
+}
+
+.mission-name small,
+.agent-desc,
+.task-result,
+.event,
+.check-summary p,
+.empty p {
+  font-size: 10px;
+}
+
+.agent-desc,
+.task-result,
+.check-summary p,
+.empty p {
+  line-height: 1.7;
+}
+
+.field input,
+.field select,
+.field textarea,
+.toolbar input,
+.toolbar select,
+.deliverable textarea {
+  min-height: 40px;
+  color: var(--color-text);
+}
+
+.field textarea,
+.deliverable textarea {
+  min-height: 76px;
+}
+
+.status-active,
+.status-ready,
+.status-done,
+.status-completed {
+  color: var(--color-green);
+}
+
+.status-paused,
+.status-approval {
+  color: var(--color-amber);
+}
+
+.status-cancelled,
+.status-failed {
+  color: var(--color-red);
+}
+
+.status-pending,
+.status-draft {
+  color: #b8b8c6;
+}
+
+.toast {
+  z-index: var(--z-toast);
+  animation: toast-enter 180ms ease-out both;
+}
+
+.modal-backdrop {
+  z-index: var(--z-modal);
+}
+
+.modal {
+  box-shadow: 0 24px 80px #0009;
+  animation: modal-enter 170ms ease-out both;
+}
+
+.task-result,
+.deliverable textarea {
+  overflow-wrap: anywhere;
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes modal-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .hero-visual {
+    right: -74px;
+    opacity: 0.16;
+  }
+
+  .hero {
+    padding-right: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  .main {
+    width: 100%;
+  }
+
+  .sidebar {
+    position: sticky;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    overflow: visible;
+  }
+
+  .nav-item,
+  .nav-item.selected {
+    min-width: 0;
+    width: 100%;
+    min-height: 42px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 5px 3px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .nav-icon {
+    width: auto;
+    flex: 0 0 auto;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .nav-item.selected .nav-icon {
+    color: var(--color-purple);
+  }
+
+  .nav-item .live-dot {
+    display: none;
+  }
+
+  .hero-visual {
+    opacity: 0.15;
+    right: -142px;
+    top: 50%;
+    transform: translateY(-20%) scale(.7);
+  }
+
+  .content,
+  .topbar,
+  .footer {
+    min-width: 0;
+  }
+
+  .mission-toolbar .primary,
+  .mission-toolbar .secondary,
+  .mission-toolbar .tiny-action {
+    min-height: 36px;
+  }
+
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal {
+    max-height: min(92dvh, 860px);
+  }
+}
+
+@media (max-width: 380px) {
+  .brand {
+    margin-bottom: 7px;
+  }
+
+  .brand b {
+    font-size: 11px;
+  }
+
+  .brand small {
+    font-size: 7px;
+  }
+
+  .nav-item,
+  .nav-item.selected {
+    gap: 2px;
+    padding-inline: 2px;
+    font-size: 8px;
+  }
+
+  .nav-icon {
+    width: auto;
+    flex-basis: auto;
+    font-size: 13px;
+  }
+
+  .content {
+    padding-inline: 11px;
+  }
+
+  .hero {
+    padding-inline: 16px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-visual {
+    right: -155px;
+    opacity: 0.13;
+  }
+
+  .top-actions .avatar {
+    display: none;
+  }
+
+  .topbar {
+    padding-inline: 11px;
+  }
+
+  .mission-name {
+    max-width: 43vw;
+  }
+
+  .modal-footer {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
+.hero-footer { bottom: 6px; }
+.language-picker { height: 32px; min-width: 52px; padding: 0 7px; border: 1px solid var(--line, #26313d); border-radius: 8px; background: #111821; color: #a9b5c4; font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+.language-picker:focus-visible { outline: 2px solid #4bd9e8; outline-offset: 2px; }
+
+.tutorial-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.tutorial-card{padding:20px}.tutorial-card h2{font-size:16px;line-height:1.45;letter-spacing:-.02em;margin:8px 0}.tutorial-card p,.tutorial-card li{color:#a4a4b2;font-size:10px;line-height:1.8}.tutorial-card ul,.tutorial-card ol{padding-left:19px;margin:12px 0 0}.tutorial-card li{padding:3px 0}.tutorial-card li b,.tutorial-examples b{color:#dedde8}.tutorial-intro{grid-column:1/-1;background:linear-gradient(120deg,#171421,#111219 70%)}.tutorial-intro h2{font-size:21px;max-width:680px}.tutorial-wide{grid-column:1/-1}.tutorial-examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:13px}.tutorial-examples p{margin:5px 0 0}@media(max-width:700px){.tutorial-grid{grid-template-columns:1fr}.tutorial-intro,.tutorial-wide{grid-column:auto}.tutorial-card{padding:16px}.tutorial-examples{grid-template-columns:1fr;gap:10px}}
